@@ -5,7 +5,7 @@ interface Tag {
   name: string;
 }
 
-export interface ToolState {
+export interface Tool{
   id: string;
   name: string;
   link: string;
@@ -13,22 +13,32 @@ export interface ToolState {
   description: string;
 }
 
-export interface State {
-  tools: ToolState[] | [];
+export interface ToolState {
+  tools: Tool[] | [];
   isOnlyTag: boolean;
 }
 
-export const initialState: State = {
-  tools: [],
-  isOnlyTag: false
+export const initialState: ToolState = {
+  tools: [{
+    name: 'Tool Name',
+    description: 'Tool Description',
+    link: 'Tool Link',
+    tag: [{
+        id: '1',
+        name: 'Tag Name'
+    }],
+    id: '1'
+  }],
+  isOnlyTag: true
 };
 
 const toolSlice = createSlice({
   name: 'tools',
   initialState,
   reducers: {
-    set: (state, {payload}: PayloadAction<ToolState[]>) => ({...state, ...payload}),
-    toggleIsOnlyTag: state => ({...state, isOnlyTag: !state.isOnlyTag}) 
+    set: (state, {payload}: PayloadAction<ToolState>) => ({...state, ...payload}),
+    toggleIsOnlyTag: state => ({...state, isOnlyTag: !state.isOnlyTag}),
+    callAlert: () => alert('callAlert')
   }
 })
 

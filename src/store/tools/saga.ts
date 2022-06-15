@@ -11,7 +11,7 @@ const fetchTools = async () => {
   return response.data
 }
 
-function* load(): Generator<CallEffect<ToolState[]> | PutEffect, void, ToolState[]> {
+function* load(): Generator<CallEffect<ToolState> | PutEffect, void, ToolState> {
   try {
     const response = yield call(fetchTools)
     yield put(toolActions.set(response))

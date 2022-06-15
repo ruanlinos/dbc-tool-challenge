@@ -1,8 +1,8 @@
-import ToolsReducer from './tools/duck'
+import tools from './tools/duck'
 import {combineReducers} from '@reduxjs/toolkit'
 
 const rootReducer = combineReducers({
-  ToolsReducer
+  tools
 })
 
 
